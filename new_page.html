@@ -833,7 +833,7 @@
         // Prevent cheating attempts
         inputEl.addEventListener("paste", (e) => {
           e.preventDefault();
-          showNotification("Pasting is disabled during tests! ❌", "error");
+          showNotification("Pasting is disabled during tests! ", "error");
         });
         
         inputEl.addEventListener("keydown", (e) => {
