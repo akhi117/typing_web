@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700"
+    />
+    <title>Enhanced TypeFast</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div
+      class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden"
+      style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'
+    >
+      <div class="layout-container flex h-full grow flex-col">
+        <header
+          class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f1f2f4] px-10 py-3"
+        >
+          <div class="flex items-center gap-4 text-[#121417]">
+            <div class="size-4">
+              <svg
+                viewBox="0 0 48 48"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"
+                ></path>
+              </svg>
+            </div>
+            <h2
+              class="text-[#121417] text-lg font-bold leading-tight tracking-[-0.015em]"
+            >
+              TypeFast
+            </h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[#121417] text-sm font-medium leading-normal hover:text-blue-600 transition-colors" href="#"
+                >Test</a
+              >
+              <a class="text-[#121417] text-sm font-medium leading-normal hover:text-blue-600 transition-colors" href="#"
+                >Practice</a
+              >
+              <a class="text-[#121417] text-sm font-medium leading-normal hover:text-blue-600 transition-colors" href="#"
+                >Leaderboard</a
+              >
+              <a class="text-[#121417] text-sm font-medium leading-normal hover:text-blue-600 transition-colors" href="#"
+                >Settings</a
+              >
+            </div>
+            <button
+              id="settingsBtn"
+              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 bg-[#f1f2f4] text-[#121417] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5 hover:bg-[#e1e4e8] transition-colors"
+              aria-label="Settings"
+            >
+              <div
+                class="text-[#121417]"
+                data-icon="Gear"
+                data-size="20px"
+                data-weight="regular"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  viewBox="0 0 256 256"
+                >
+                  <path
+                    d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-29.84q.06-2.16,0-4.32l14.92-18.64a8,8,0,0,0,1.48-7.06,107.21,107.21,0,0,0-10.88-26.25,8,8,0,0,0-6-3.93l-23.72-2.64q-1.48-1.56-3-3L186,40.54a8,8,0,0,0-3.94-6,107.71,107.71,0,0,0-26.25-10.87,8,8,0,0,0-7.06,1.49L130.16,40Q128,40,125.84,40L107.2,25.11a8,8,0,0,0-7.06-1.48A107.6,107.6,0,0,0,73.89,34.51a8,8,0,0,0-3.93,6L67.32,64.27q-1.56,1.49-3,3L40.54,70a8,8,0,0,0-6,3.94,107.71,107.71,0,0,0-10.87,26.25,8,8,0,0,0,1.49,7.06L40,125.84Q40,128,40,130.16L25.11,148.8a8,8,0,0,0-1.48,7.06,107.21,107.21,0,0,0,10.88,26.25,8,8,0,0,0,6,3.93l23.72,2.64q1.49,1.56,3,3L70,215.46a8,8,0,0,0,3.94,6,107.71,107.71,0,0,0,26.25,10.87,8,8,0,0,0,7.06-1.49L125.84,216q2.16.06,4.32,0l18.64,14.92a8,8,0,0,0,7.06,1.48,107.21,107.21,0,0,0,26.25-10.88,8,8,0,0,0,3.93-6l2.64-23.72q1.56-1.48,3-3L215.46,186a8,8,0,0,0,6-3.94,107.71,107.71,0,0,0,10.87-26.25,8,8,0,0,0-1.49-7.06Zm-16.1-6.5a73.93,73.93,0,0,1,0,8.68,8,8,0,0,0,1.74,5.48l14.19,17.73a91.57,91.57,0,0,1-6.23,15L187,173.11a8,8,0,0,0-5.1,2.64,74.11,74.11,0,0,1-6.14,6.14,8,8,0,0,0-2.64,5.1l-2.51,22.58a91.32,91.32,0,0,1-15,6.23l-17.74-14.19a8,8,0,0,0-5-1.75h-.48a73.93,73.93,0,0,1-8.68,0,8,8,0,0,0-5.48,1.74L100.45,215.8a91.57,91.57,0,0,1-15-6.23L82.89,187a8,8,0,0,0-2.64-5.1,74.11,74.11,0,0,1-6.14-6.14,8,8,0,0,0-5.1-2.64L46.43,170.6a91.32,91.32,0,0,1-6.23-15l14.19-17.74a8,8,0,0,0,1.74-5.48,73.93,73.93,0,0,1,0-8.68,8,8,0,0,0-1.74-5.48L40.2,100.45a91.57,91.57,0,0,1,6.23-15L69,82.89a8,8,0,0,0,5.1-2.64,74.11,74.11,0,0,1,6.14-6.14A8,8,0,0,0,82.89,69L85.4,46.43a91.32,91.32,0,0,1,15-6.23l17.74,14.19a8,8,0,0,0,5.48,1.74,73.93,73.93,0,0,1,8.68,0,8,8,0,0,0,5.48-1.74L155.55,40.2a91.57,91.57,0,0,1,15,6.23L173.11,69a8,8,0,0,0,2.64,5.1,74.11,74.11,0,0,1,6.14,6.14,8,8,0,0,0,5.1,2.64l22.58,2.51a91.32,91.32,0,0,1,6.23,15l-14.19,17.74A8,8,0,0,0,199.87,123.66Z"
+                  ></path>
+                </svg>
+              </div>
+            </button>
+            <div
+              class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBFVUPraeZKP5JUNu9qSsWBQ_cT3dWVwrzM6LAaANQ9YOTcEKyQNXMCSvBAhe8H0xRtrWqfe7NPXKfaV_mHnienbu1o0zdGYgjU7nXoKjHT6-K5zVpvb_HGvQzhS0-y7jO3sJBxmxWx_isgcXNkqRod9j0L9fcyZntqOCHGVy1_gJyqFugIecgyIe1MakKkbqC1iHAmAw5igeh2tILGVpl_BXjj6PV2YlhJyH8HR-l97lPB3l8oAGs15rZj00sbXVTR_TBSDmLml4k");'
+            ></div>
+          </div>
+        </header>
+
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div
+            class="layout-content-container flex flex-col w-[512px] max-w-[512px] py-5 max-w-[960px] flex-1"
+          >
+            <h2
+              class="text-[#121417] tracking-light text-[28px] font-bold leading-tight px-4 text-center pb-3 pt-5"
+            >
+              Your Typing Speed
+            </h2>
+
+            <!-- RESULTS CARDS -->
+            <div class="flex flex-wrap gap-4 p-4">
+              <div
+                class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 bg-[#f1f2f4] transition-all duration-300 hover:bg-[#e8eaed]"
+              >
+                <p class="text-[#121417] text-base font-medium leading-normal">
+                  Words Per Minute
+                </p>
+                <p
+                  id="wpmValue"
+                  class="text-[#121417] tracking-light text-2xl font-bold leading-tight"
+                >
+                  0
+                </p>
+              </div>
+              <div
+                class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 bg-[#f1f2f4] transition-all duration-300 hover:bg-[#e8eaed]"
+              >
+                <p class="text-[#121417] text-base font-medium leading-normal">
+                  Accuracy
+                </p>
+                <p
+                  id="accValue"
+                  class="text-[#121417] tracking-light text-2xl font-bold leading-tight"
+                >
+                  0%
+                </p>
+              </div>
+              <div
+                class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 bg-[#f1f2f4] transition-all duration-300 hover:bg-[#e8eaed]"
+              >
+                <p class="text-[#121417] text-base font-medium leading-normal">
+                  Errors
+                </p>
+                <p
+                  id="errorsValue"
+                  class="text-[#121417] tracking-light text-2xl font-bold leading-tight"
+                >
+                  0
+                </p>
+              </div>
+            </div>
+
+            <!-- DIFFICULTY SELECTOR -->
+            <div class="flex justify-center gap-2 px-4 mb-4">
+              <label class="text-sm text-[#677583] font-medium">Difficulty:</label>
+              <select
+                id="difficultySelect"
+                class="text-sm bg-[#f1f2f4] rounded px-2 py-1 border-none focus:ring-2 focus:ring-[#d2e2f3]"
+              >
+                <option value="easy">Easy</option>
+                <option value="medium" selected>Medium</option>
+                <option value="hard">Hard</option>
+              </select>
+              <label class="text-sm text-[#677583] font-medium ml-4">Duration:</label>
+              <select
+                id="durationSelect"
+                class="text-sm bg-[#f1f2f4] rounded px-2 py-1 border-none focus:ring-2 focus:ring-[#d2e2f3]"
+              >
+                <option value="30">30s</option>
+                <option value="60" selected>60s</option>
+                <option value="120">2 min</option>
+              </select>
+            </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="flex justify-center">
+              <div
+                class="flex flex-1 gap-3 flex-wrap px-4 py-3 max-w-[480px] justify-center"
+              >
+                <button
+                  id="startBtn"
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#d2e2f3] text-[#121417] text-sm font-bold leading-normal tracking-[0.015em] grow hover:bg-[#c1d4ec] active:bg-[#b0c6e5] transition-colors"
+                >
+                  <span class="truncate">Start New Test</span>
+                </button>
+                <button
+                  id="shareBtn"
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f1f2f4] text-[#121417] text-sm font-bold leading-normal tracking-[0.015em] grow hover:bg-[#e1e4e8] active:bg-[#d1d6db] transition-colors"
+                >
+                  <span class="truncate">Share Results</span>
+                </button>
+                <button
+                  id="resetBtn"
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#ffe4e1] text-[#121417] text-sm font-bold leading-normal tracking-[0.015em] grow hover:bg-[#ffd6d2] active:bg-[#ffc8c3] transition-colors"
+                >
+                  <span class="truncate">Reset Stats</span>
+                </button>
+              </div>
+            </div>
+            <p
+              class="text-[#677583] text-sm font-normal leading-normal pb-3 pt-1 px-4 text-center"
+            >
+              Share your results on social media and challenge your friends!
+            </p>
+
+            <!-- TEST PANEL -->
+            <div
+              id="testPanel"
+              class="mx-4 mt-2 hidden flex-col gap-3 rounded-xl border border-[#f1f2f4] p-4 animate-in fade-in duration-300"
+            >
+              <div class="flex items-center justify-between">
+                <p class="text-sm text-[#677583]">
+                  Time: <span id="timeLeft">60</span>s
+                </p>
+                <p class="text-sm text-[#677583]">
+                  Progress: <span id="progressChars">0</span> /
+                  <span id="totalChars">0</span>
+                </p>
+              </div>
+
+              <div
+                id="prompt"
+                class="rounded-lg bg-[#f8fafc] p-3 text-[#121417] leading-relaxed min-h-[4rem] border border-[#e2e8f0]"
+              ></div>
+
+              <textarea
+                id="inputArea"
+                class="w-full h-28 rounded-lg border border-[#e2e8f0] p-3 outline-none focus:ring-2 focus:ring-[#d2e2f3] focus:border-transparent resize-none font-mono"
+                placeholder="Start typing here after the countdown…"
+                disabled
+              ></textarea>
+
+              <div class="flex justify-between items-center">
+                <div class="text-sm text-[#677583]">
+                  Live WPM: <span id="liveWPM" class="font-semibold">0</span>
+                </div>
+                <div id="countdown" class="text-center text-xl font-bold text-[#d2691e]"></div>
+                <div class="text-sm text-[#677583]">
+                  Errors: <span id="liveErrors" class="font-semibold text-red-500">0</span>
+                </div>
+              </div>
+
+              <div class="flex gap-2 justify-end">
+                <button
+                  id="pauseBtn"
+                  class="h-9 rounded-xl bg-[#f1f2f4] px-3 text-sm font-semibold text-[#121417] hover:bg-[#e1e4e8] transition-colors"
+                >
+                  Pause
+                </button>
+                <button
+                  id="endBtn"
+                  class="h-9 rounded-xl bg-[#ffe4e1] px-3 text-sm font-semibold text-[#121417] hover:bg-[#ffd6d2] transition-colors"
+                >
+                  End Test
+                </button>
+              </div>
+            </div>
+
+            <!-- STATS HISTORY -->
+            <div id="statsHistory" class="mx-4 mt-4 hidden">
+              <h3 class="text-lg font-semibold mb-2">Recent Tests</h3>
+              <div id="historyList" class="space-y-2 max-h-40 overflow-y-auto">
+                <!-- History items will be inserted here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enhanced Logic -->
+    <script>
+      (function () {
+        // Elements
+        const wpmEl = document.getElementById("wpmValue");
+        const accEl = document.getElementById("accValue");
+        const errorsEl = document.getElementById("errorsValue");
+        const startBtn = document.getElementById("startBtn");
+        const shareBtn = document.getElementById("shareBtn");
+        const resetBtn = document.getElementById("resetBtn");
+        const settingsBtn = document.getElementById("settingsBtn");
+        const difficultySelect = document.getElementById("difficultySelect");
+        const durationSelect = document.getElementById("durationSelect");
+
+        const testPanel = document.getElementById("testPanel");
+        const promptEl = document.getElementById("prompt");
+        const inputEl = document.getElementById("inputArea");
+        const countdownEl = document.getElementById("countdown");
+        const timeLeftEl = document.getElementById("timeLeft");
+        const progressCharsEl = document.getElementById("progressChars");
+        const totalCharsEl = document.getElementById("totalChars");
+        const endBtn = document.getElementById("endBtn");
+        const pauseBtn = document.getElementById("pauseBtn");
+        const liveWPMEl = document.getElementById("liveWPM");
+        const liveErrorsEl = document.getElementById("liveErrors");
+        const statsHistory = document.getElementById("statsHistory");
+        const historyList = document.getElementById("historyList");
+
+        // Text collections by difficulty
+        const TEXT_COLLECTIONS = {
+          easy: [
+            "The cat sat on the mat and looked around the room.",
+            "A bird flew over the house and landed on a tree.",
+            "The sun was bright and warm today.",
+            "Dogs like to play in the park with their owners.",
+            "I like to read books in my free time."
+          ],
+          medium: [
+            "The quick brown fox jumps over the lazy dog.",
+            "Typing fast is a skill that improves with practice and patience.",
+            "Consistency beats intensity when building rock solid habits.",
+            "Technology has revolutionized the way we communicate and work.",
+            "Learning new skills requires dedication and persistent effort."
+          ],
+          hard: [
+            "Pneumonoultramicroscopicsilicovolcanoconiosis is considered one of the longest words.",
+            "The Byzantine Empire's influence extended throughout southeastern Europe and Asia Minor.",
+            "Quantum mechanics describes the behavior of subatomic particles in probabilistic terms.",
+            "Cryptocurrency utilizes cryptographic techniques to secure financial transactions.",
+            "Sophisticated algorithms optimize computational efficiency through parallel processing."
+          ]
+        };
+
+        // State management
+        let gameState = {
+          target: "",
+          startTime: null,
+          timerInterval: null,
+          tickInterval: null,
+          remaining: 60,
+          finished: false,
+          paused: false,
+          pausedTime: 0,
+          difficulty: "medium",
+          duration: 60,
+          errorCount: 0,
+          testHistory: JSON.parse(localStorage.getItem("typingHistory") || "[]")
+        };
+
+        // Utilities
+        const getRandomText = () => {
+          const texts = TEXT_COLLECTIONS[gameState.difficulty];
+          return texts[Math.floor(Math.random() * texts.length)];
+        };
+
+        const wordsFromChars = (chars) => chars / 5; // standard WPM calculation
+        const clamp = (n, a, b) => Math.min(Math.max(n, a), b);
+
+        // Enhanced text rendering with better visual feedback
+        function renderPrompt(text, typed) {
+          const out = [];
+          let errorCount = 0;
+          
+          for (let i = 0; i < text.length; i++) {
+            const ch = text[i];
+            const userCh = typed[i];
+            
+            if (userCh == null) {
+              // Upcoming character
+              out.push(`<span class="text-[#94a3b8]">${escapeHtml(ch)}</span>`);
+            } else if (userCh === ch) {
+              // Correct character
+              out.push(`<span class="bg-[#dcfce7] text-[#166534] rounded px-0.5">${escapeHtml(ch)}</span>`);
+            } else {
+              // Incorrect character
+              errorCount++;
+              out.push(`<span class="bg-[#fecaca] text-[#dc2626] rounded px-0.5">${escapeHtml(ch)}</span>`);
+            }
+          }
+          
+          // Handle extra characters typed beyond the target text
+          if (typed.length > text.length) {
+            for (let i = text.length; i < typed.length; i++) {
+              errorCount++;
+              out.push(`<span class="bg-[#fca5a5] text-[#dc2626] rounded px-0.5">${escapeHtml(typed[i])}</span>`);
+            }
+          }
+          
+          gameState.errorCount = errorCount;
+          liveErrorsEl.textContent = String(errorCount);
+          
+          return out.join("");
+        }
+
+        function escapeHtml(s) {
+          const map = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" };
+          return s.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        // Enhanced statistics calculation
+        function calculateStats(typed, target, elapsedMin) {
+          const correctChars = getCorrectChars(typed, target);
+          const totalTyped = typed.length;
+          const wpm = Math.round(wordsFromChars(totalTyped) / Math.max(elapsedMin, 1/60));
+          const accuracy = totalTyped > 0 ? Math.round((correctChars / totalTyped) * 100) : 100;
+          const errors = totalTyped - correctChars;
+          
+          return { wpm: clamp(wpm, 0, 1000), accuracy: clamp(accuracy, 0, 100), errors };
+        }
+
+        function getCorrectChars(typed, text) {
+          let correct = 0;
+          const minLength = Math.min(typed.length, text.length);
+          
+          for (let i = 0; i < minLength; i++) {
+            if (typed[i] === text[i]) correct++;
+          }
+          
+          return correct;
+        }
+
+        // Test initialization with countdown
+        function initTest() {
+          resetTestState();
+          gameState.target = getRandomText();
+          gameState.duration = parseInt(durationSelect.value);
+          gameState.difficulty = difficultySelect.value;
+          gameState.remaining = gameState.duration;
+          
+          setupTestUI();
+          startCountdown();
+        }
+
+        function resetTestState() {
+          clearIntervals();
+          gameState.finished = false;
+          gameState.paused = false;
+          gameState.pausedTime = 0;
+          gameState.errorCount = 0;
+          gameState.startTime = null;
+        }
+
+        function setupTestUI() {
+          promptEl.innerHTML = renderPrompt(gameState.target, "");
+          totalCharsEl.textContent = String(gameState.target.length);
+          progressCharsEl.textContent = "0";
+          timeLeftEl.textContent = String(gameState.remaining);
+          liveWPMEl.textContent = "0";
+          liveErrorsEl.textContent = "0";
+          
+          inputEl.value = "";
+          inputEl.disabled = true;
+          testPanel.classList.remove("hidden");
+          
+          // Disable controls during test
+          difficultySelect.disabled = true;
+          durationSelect.disabled = true;
+        }
+
+        function startCountdown() {
+          let count = 3;
+          countdownEl.textContent = String(count);
+          countdownEl.style.fontSize = "2rem";
+          
+          const countdownInterval = setInterval(() => {
+            count--;
+            if (count > 0) {
+              countdownEl.textContent = String(count);
+              // Add visual feedback
+              countdownEl.style.transform = "scale(1.2)";
+              setTimeout(() => countdownEl.style.transform = "scale(1)", 150);
+            } else {
+              clearInterval(countdownInterval);
+              countdownEl.textContent = "GO!";
+              countdownEl.style.color = "#10b981";
+              setTimeout(() => {
+                countdownEl.textContent = "";
+                countdownEl.style.fontSize = "1.25rem";
+                countdownEl.style.color = "#d2691e";
+                beginTest();
+              }, 500);
+            }
+          }, 1000);
+        }
+
+        // Enhanced test execution
+        function beginTest() {
+          gameState.startTime = Date.now();
+          inputEl.disabled = false;
+          inputEl.focus();
+          
+          // Main timer
+          gameState.timerInterval = setInterval(() => {
+            if (!gameState.paused) {
+              gameState.remaining--;
+              timeLeftEl.textContent = String(gameState.remaining);
+              
+              // Visual warning when time is low
+              if (gameState.remaining <= 10) {
+                timeLeftEl.style.color = "#dc2626";
+                timeLeftEl.style.fontWeight = "bold";
+              }
+              
+              if (gameState.remaining <= 0) {
+                finishTest();
+              }
+            }
+          }, 1000);
+
+          // Live statistics update
+          gameState.tickInterval = setInterval(() => {
+            if (!gameState.paused) {
+              updateLiveStats();
+            }
+          }, 100);
+        }
+
+        function updateLiveStats() {
+          const typed = inputEl.value;
+          progressCharsEl.textContent = String(typed.length);
+          promptEl.innerHTML = renderPrompt(gameState.target, typed);
+
+          // Auto-complete when finished typing
+          if (typed.length >= gameState.target.length && getCorrectChars(typed, gameState.target) === gameState.target.length) {
+            setTimeout(finishTest, 500);
+            return;
+          }
+
+          if (!gameState.startTime) return;
+          
+          const elapsedMs = Date.now() - gameState.startTime - gameState.pausedTime;
+          const elapsedMin = elapsedMs / 60000;
+          
+          if (elapsedMin > 0) {
+            const stats = calculateStats(typed, gameState.target, elapsedMin);
+            liveWPMEl.textContent = String(stats.wpm);
+            
+            // Update main display with live stats
+            wpmEl.textContent = String(stats.wpm);
+            accEl.textContent = String(stats.accuracy) + "%";
+            errorsEl.textContent = String(gameState.errorCount);
+          }
+        }
+
+        // Pause/Resume functionality
+        function togglePause() {
+          if (gameState.paused) {
+            resumeTest();
+          } else {
+            pauseTest();
+          }
+        }
+
+        function pauseTest() {
+          if (gameState.finished) return;
+          
+          gameState.paused = true;
+          gameState.pauseStartTime = Date.now();
+          inputEl.disabled = true;
+          pauseBtn.textContent = "Resume";
+          countdownEl.textContent = "PAUSED";
+          countdownEl.style.color = "#f59e0b";
+        }
+
+        function resumeTest() {
+          if (gameState.finished) return;
+          
+          gameState.pausedTime += Date.now() - gameState.pauseStartTime;
+          gameState.paused = false;
+          inputEl.disabled = false;
+          inputEl.focus();
+          pauseBtn.textContent = "Pause";
+          countdownEl.textContent = "";
+          countdownEl.style.color = "#d2691e";
+        }
+
+        // Enhanced test completion
+        function finishTest() {
+          if (gameState.finished) return;
+          
+          gameState.finished = true;
+          clearIntervals();
+          inputEl.disabled = true;
+          
+          // Re-enable controls
+          difficultySelect.disabled = false;
+          durationSelect.disabled = false;
+
+          // Calculate final statistics
+          const typed = inputEl.value;
+          const elapsedMs = Date.now() - gameState.startTime - gameState.pausedTime;
+          const elapsedMin = Math.max(elapsedMs / 60000, 1/60);
+          const finalStats = calculateStats(typed, gameState.target, elapsedMin);
+
+          // Update display
+          wpmEl.textContent = String(finalStats.wpm);
+          accEl.textContent = String(finalStats.accuracy) + "%";
+          errorsEl.textContent = String(finalStats.errors);
+
+          // Save to history
+          saveTestResult(finalStats);
+          
+          // Show completion message
+          countdownEl.textContent = "COMPLETE!";
+          countdownEl.style.color = "#10b981";
+          countdownEl.style.fontSize = "1.5rem";
+          
+          // Celebrate good performance
+          if (finalStats.wpm > 60 && finalStats.accuracy > 95) {
+            celebrateAchievement();
+          }
+        }
+
+        function celebrateAchievement() {
+          // Add some visual celebration
+          document.body.style.animation = "pulse 0.5s ease-in-out";
+          setTimeout(() => {
+            document.body.style.animation = "";
+          }, 500);
+        }
+
+        // History management
+        function saveTestResult(stats) {
+          const result = {
+            date: new Date().toISOString(),
+            wpm: stats.wpm,
+            accuracy: stats.accuracy,
+            errors: stats.errors,
+            difficulty: gameState.difficulty,
+            duration: gameState.duration
+          };
+          
+          gameState.testHistory.unshift(result);
+          
+          // Keep only last 10 results
+          if (gameState.testHistory.length > 10) {
+            gameState.testHistory = gameState.testHistory.slice(0, 10);
+          }
+          
+          // Save to localStorage (fallback storage since we can't use it directly)
+          try {
+            localStorage.setItem("typingHistory", JSON.stringify(gameState.testHistory));
+          } catch (e) {
+            console.log("Storage not available");
+          }
+          
+          displayHistory();
+        }
+
+        function displayHistory() {
+          if (gameState.testHistory.length === 0) {
+            statsHistory.classList.add("hidden");
+            return;
+          }
+          
+          statsHistory.classList.remove("hidden");
+          historyList.innerHTML = "";
+          
+          gameState.testHistory.forEach((result, index) => {
+            const item = document.createElement("div");
+            item.className = "flex justify-between items-center p-2 bg-[#f8fafc] rounded text-sm";
+            
+            const date = new Date(result.date).toLocaleDateString();
+            const time = new Date(result.date).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            
+            item.innerHTML = `
+              <span class="text-[#677583]">${date} ${time}</span>
+              <div class="flex gap-4">
+                <span class="font-semibold">${result.wpm} WPM</span>
+                <span class="text-green-600">${result.accuracy}%</span>
+                <span class="text-red-500">${result.errors} errors</span>
+                <span class="text-xs text-[#94a3b8]">${result.difficulty}</span>
+              </div>
+            `;
+            
+            historyList.appendChild(item);
+          });
+        }
+
+        function clearHistory() {
+          gameState.testHistory = [];
+          try {
+            localStorage.removeItem("typingHistory");
+          } catch (e) {
+            console.log("Storage not available");
+          }
+          displayHistory();
+        }
+
+        // Utility functions
+        function clearIntervals() {
+          if (gameState.timerInterval) {
+            clearInterval(gameState.timerInterval);
+            gameState.timerInterval = null;
+          }
+          if (gameState.tickInterval) {
+            clearInterval(gameState.tickInterval);
+            gameState.tickInterval = null;
+          }
+        }
+
+        function resetDisplay() {
+          wpmEl.textContent = "0";
+          accEl.textContent = "0%";
+          errorsEl.textContent = "0";
+          timeLeftEl.style.color = "#677583";
+          timeLeftEl.style.fontWeight = "normal";
+          testPanel.classList.add("hidden");
+        }
+
+        // Enhanced sharing functionality
+        async function shareResults() {
+          const wpm = wpmEl.textContent || "0";
+          const acc = accEl.textContent || "0%";
+          const errors = errorsEl.textContent || "0";
+          
+          const text = `I just completed a typing test on TypeFast! 🚀\n` +
+                      `⚡ Speed: ${wpm} WPM\n` +
+                      `🎯 Accuracy: ${acc}\n` +
+                      `❌ Errors: ${errors}\n` +
+                      `💪 Difficulty: ${gameState.difficulty}\n` +
+                      `⏱️ Duration: ${gameState.duration}s\n\n` +
+                      `Think you can beat my score?`;
+
+          const shareData = { 
+            title: "TypeFast - Typing Speed Test", 
+            text, 
+            url: window.location.href 
+          };
+
+          try {
+            if (navigator.share && /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+              await navigator.share(shareData);
+            } else if (navigator.clipboard) {
+              await navigator.clipboard.writeText(text + `\n\n${window.location.href}`);
+              showNotification("Results copied to clipboard! 📋", "success");
+            } else {
+              // Fallback for older browsers
+              const textArea = document.createElement("textarea");
+              textArea.value = text + `\n\n${window.location.href}`;
+              document.body.appendChild(textArea);
+              textArea.select();
+              document.execCommand('copy');
+              document.body.removeChild(textArea);
+              showNotification("Results copied! 📋", "success");
+            }
+          } catch (error) {
+            // Final fallback
+            const result = prompt("Copy this text to share your results:", text);
+          }
+        }
+
+        // Notification system
+        function showNotification(message, type = "info") {
+          const notification = document.createElement("div");
+          notification.className = `fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 transition-all duration-300 ${
+            type === "success" ? "bg-green-100 text-green-800 border border-green-200" :
+            type === "error" ? "bg-red-100 text-red-800 border border-red-200" :
+            "bg-blue-100 text-blue-800 border border-blue-200"
+          }`;
+          notification.textContent = message;
+          
+          document.body.appendChild(notification);
+          
+          // Animate in
+          setTimeout(() => notification.style.transform = "translateX(0)", 100);
+          
+          // Remove after 3 seconds
+          setTimeout(() => {
+            notification.style.transform = "translateX(100%)";
+            notification.style.opacity = "0";
+            setTimeout(() => document.body.removeChild(notification), 300);
+          }, 3000);
+        }
+
+        // Keyboard shortcuts
+        function handleKeyboardShortcuts(e) {
+          if (e.target === inputEl) return; // Don't interfere with typing
+          
+          switch (e.key) {
+            case " ":
+              if (e.ctrlKey) {
+                e.preventDefault();
+                if (!gameState.finished && gameState.startTime) {
+                  togglePause();
+                }
+              }
+              break;
+            case "Enter":
+              if (!testPanel.classList.contains("hidden") && !gameState.finished) {
+                e.preventDefault();
+                finishTest();
+              } else {
+                e.preventDefault();
+                initTest();
+              }
+              break;
+            case "Escape":
+              if (!testPanel.classList.contains("hidden")) {
+                e.preventDefault();
+                finishTest();
+                resetDisplay();
+              }
+              break;
+          }
+        }
+
+        // Settings modal (simplified)
+        function showSettings() {
+          const settings = `
+            ⚙️ Settings & Shortcuts:
+            
+            🔥 Keyboard Shortcuts:
+            • Enter: Start new test / End current test
+            • Ctrl + Space: Pause/Resume test
+            • Escape: Cancel test
+            
+            📊 Features:
+            • Multiple difficulty levels
+            • Customizable test duration
+            • Real-time statistics
+            • Test history tracking
+            • Advanced error highlighting
+            
+            💡 Tips:
+            • Focus on accuracy first, speed will follow
+            • Keep your hands on the home row
+            • Take breaks to avoid fatigue
+            • Practice consistently for best results
+          `;
+          
+          alert(settings);
+        }
+
+        // Event Listeners
+        startBtn.addEventListener("click", initTest);
+        endBtn.addEventListener("click", finishTest);
+        pauseBtn.addEventListener("click", togglePause);
+        shareBtn.addEventListener("click", shareResults);
+        resetBtn.addEventListener("click", () => {
+          if (confirm("Clear all test history?")) {
+            clearHistory();
+            showNotification("History cleared! 🗑️", "success");
+          }
+        });
+        settingsBtn.addEventListener("click", showSettings);
+        
+        inputEl.addEventListener("input", updateLiveStats);
+        
+        // Prevent cheating attempts
+        inputEl.addEventListener("paste", (e) => {
+          e.preventDefault();
+          showNotification("Pasting is disabled during tests! ❌", "error");
+        });
+        
+        inputEl.addEventListener("keydown", (e) => {
+          // Prevent certain keys during test
+          if (gameState.startTime && !gameState.finished && !gameState.paused) {
+            if (e.key === "Tab" || (e.ctrlKey && ["a", "c", "v", "x", "z"].includes(e.key))) {
+              e.preventDefault();
+            }
+          }
+        });
+
+        document.addEventListener("keydown", handleKeyboardShortcuts);
+        
+        // Prevent window refresh during test
+        window.addEventListener("beforeunload", (e) => {
+          if (gameState.startTime && !gameState.finished) {
+            e.preventDefault();
+            e.returnValue = "You have a test in progress. Are you sure you want to leave?";
+          }
+        });
+
+        // Initialize
+        displayHistory();
+        
+        // Welcome message
+        setTimeout(() => {
+          showNotification("Welcome to TypeFast! Press Enter to start or click Settings for shortcuts. 🚀");
+        }, 1000);
+      })();
+    </script>
+  </body>
+</html>
